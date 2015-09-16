@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   end
   
   def member_required
-    return if current_user.is_member_of?(group)
+    return if !current_user.is_member_of?(@group)
     flash[:warning] = "你不是這個討論板的成員，不能發文"
     redirect_to group_path(@group)
   end
